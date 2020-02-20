@@ -24,19 +24,15 @@ $(document).ready(function () {
             elEstilo = elEstilo - 1;
             armarEstilo(elEstilo);
         }
-
     });
 
     altoDisponible = $(window).height();
     altoHeader = $("#elHeader").height();
-
     altoDisponible = altoDisponible - altoHeader - 30;
 
     $("#sideBarReducido").css('height', altoDisponible + "px");
     $("#sideBarExpandido").css('height', altoDisponible + "px");
     $("#divFrame").css('height', altoDisponible + "px");
-
-
 
     $(".video_padre").click(function () {
         if ($(".video_hijo").hasClass('d-none')) {
@@ -71,7 +67,6 @@ $(document).ready(function () {
         }
     });
 
-
     $(".internet_padre").click(function () {
         if ($(".internet_hijo").hasClass('d-none')) {
             $(".esHijo").removeClass('d-block').addClass('d-none');
@@ -79,11 +74,11 @@ $(document).ready(function () {
             $(".telefonia_hijo").removeClass('d-block').addClass('d-none');
             $(".telefoniaMovil_hijo").removeClass('d-block').addClass('d-none');
             $(".internet_hijo").removeClass('d-none').addClass('d-block');
-
             //                $(".telefonia_hijo").removeClass('d-block').addClass('d-none');
             //                $(".telefoniaMovil_hijo").removeClass('d-block').addClass('d-none');
         }
-        else {
+        else
+        {
             switch (llave_internet) {
                 case 0:
                     $(".internet_hijo").removeClass('d-block').addClass('d-none');
@@ -169,9 +164,7 @@ $(document).ready(function () {
             llave_telefoniaMovil = 0;
         }
     });
-
 })
-
 
 function armarEstilo(cual) {
     switch (cual) {
@@ -233,6 +226,7 @@ function armarEstilo(cual) {
             break;
     }
 }
+
 function rearmarPantalla(como) {
     $("#divFrame").css('visibility', 'hidden');
     $("#divFrame").removeClass('col-6').removeClass('col-8').removeClass('col-9').addClass('col-11');
@@ -351,8 +345,8 @@ function mostrarWorkflow(cual) {
             break;
     }
     //            $("#sidebarWorkflow").removeClass('d-none').addClass('d-block');
-
 }
+
 function ejecutar(cual) {
     rearmarPantalla('ejecucion');
     $("#divFrame").css('visibility', 'visible');
@@ -444,6 +438,7 @@ function ejecutar(cual) {
             break;
     }
 }
+
 function ActualizarEstado() {
 
     $('#btn-close-modal').click();
@@ -459,24 +454,20 @@ function ActualizarEstado() {
         cache: false,
         /***** Estas son las líneas agregadas *****/
         timeout: 120000,
-
         beforeSend: function (xhr) {
             xhr.readystate = 1;
             $("#divEsperando").removeClass('d-none').addClass('d-block');
         },
-
         error: function (x, t, m) {
 
             $("#divEsperando").removeClass('d-block').addClass('d-none');
             $("#sidebarExpandido").removeClass('d-none').addClass('d-block');
         },
-
         success: function (data) {
 
             armarHeader(data.datosCliente, data.direccion, data.mails, data.productos, data.telefono);
         }
     });
-
 
     /**** Se inicializa todo con Iconos Grises ****/
     $("#imgReducidoVideo").attr('src', '/Files/iconGris.png');
@@ -502,20 +493,15 @@ function ActualizarEstado() {
         cache: false,
         /***** Estas son las líneas agregadas *****/
         timeout: 120000,
-
         beforeSend: function (xhr) {
-
             xhr.readystate = 1;
             $("#divEsperando").removeClass('d-none').addClass('d-block');
         },
-
         error: function (x, t, m) {
-
             //                    console.log("Default.aspx ActualizarEstado() Error:");
             $("#divEsperando").removeClass('d-block').addClass('d-none');
             $("#sidebarExpandido").removeClass('d-none').addClass('d-block');
         },
-
         success: function (data) {
             //                    console.log("Default.aspx ActualizarEstado() OK:");
             var variable = data.content;
@@ -524,21 +510,15 @@ function ActualizarEstado() {
                 var indiceInicio = variable.indexOf('<div class="content info">');
                 if (indiceInicio != -1) {
                     var variable2 = variable.substr(indiceInicio + 26);
-
                     var indiceFin = variable2.indexOf('</div>');
                     if (indiceFin != -1) {
                         var variable3 = variable2.substr(0, indiceFin);
-
                         //alert(variable3);
-
                         var arrayEstados = variable3.split('<p>');
                         var losServicios = true;
-
                         for (contador = 0; contador < arrayEstados.length; contador++) {
                             var estado = arrayEstados[contador].replace('</p>', '');
-
                             var claveValor = estado.split('=');
-
                             if (claveValor[0] == "Video") {
                                 if (claveValor[1].trim() == "OK") {
                                     $("#imgReducidoVideo").attr('src', '/Files/iconVerde.png');
@@ -597,7 +577,6 @@ function ActualizarEstado() {
                                     losServicios = false;
                                 }
                             }
-
                         }
                         if (losServicios) {
                             $("#imgServicios").attr('src', '/Files/iconVerde.png');
@@ -617,6 +596,7 @@ function ActualizarEstado() {
 }
 
 function armarHeader(datosCliente, datosDireccion, datosMails, datosProductos, datosTelefono) {
+
     if (datosCliente.Estado == 1)
         $("#spanEstadoCliente").html('Activo');
     else
@@ -659,12 +639,11 @@ function armarHeader(datosCliente, datosDireccion, datosMails, datosProductos, d
         $("#header_localidad_pcia").html(datosDireccion.ciudad + " - " + datosDireccion.provincia);
         laCiudad = datosDireccion.ciudad;
     }
-    var datos = { accion: 'buscarMeteorologia' };
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=" + laCiudad + ",AR&lang=es&units=metric&APPID=4abe765eff8302e3d59269d800d12af7";
     $.ajax({
         type: "GET",
-        url: "http://api.openweathermap.org/data/2.5/weather?q=" + laCiudad + ",AR&lang=es&units=metric&APPID=4abe765eff8302e3d59269d800d12af7",
+        url: url,
         async: false,
-        data: datos,
         dataType: 'json',
         encoding: "UTF-8",
         cache: false,
@@ -679,13 +658,11 @@ function armarHeader(datosCliente, datosDireccion, datosMails, datosProductos, d
             $("#spanTemperatura_max").html(Math.round(parseFloat(data.main.temp_max)) + "°");
         }
     });
-
 /*************************/
 }
 
 function seleccionaTelefono() {
     $("#hiddenTelefono").val($("#cmbTelefonos").val());
-    //             $("#Form1").submit();
 }
 function seleccionaMail() {
     $("#hiddenMail").val($("#cmbMails").val());
@@ -699,14 +676,10 @@ function BuscarDatos() {
 
 }
 
-
-
 function ObtenerDatosCliente() {
 
     var dniConsulta = $("#txtDNI").val();
-
     var datos = "";
-
 
     $.ajax({
         type: "GET",
@@ -718,17 +691,14 @@ function ObtenerDatosCliente() {
         cache: false,
         /***** Estas son las líneas agregadas *****/
         timeout: 120000,
-
         beforeSend: function (xhr) {
             xhr.readystate = 1;
             $("#divEsperando").removeClass('d-none').addClass('d-block');
         },
-
         error: function (x, t, m) {
             $("#divEsperando").removeClass('d-block').addClass('d-none');
             $("#sidebarExpandido").removeClass('d-none').addClass('d-block');
         },
-
         success: function (data) {
             var variable = "<br ><br ><br >";
             variable += "Nombre y Apellido:" + data.nombre + " " + data.apellido + "<br >";
@@ -738,5 +708,4 @@ function ObtenerDatosCliente() {
             $("#datos").html(variable);
         }
     });
-
 }
