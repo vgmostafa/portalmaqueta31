@@ -645,7 +645,7 @@ function armarHeader(datosCliente, datosDireccion, datosMails, datosProductos, d
         url: url,
         async: false,
         dataType: 'json',
-        encoding: "UTF-8",
+        encoding: "UTF-8",  
         cache: false,
         error: function (x, t, m) {
         },
