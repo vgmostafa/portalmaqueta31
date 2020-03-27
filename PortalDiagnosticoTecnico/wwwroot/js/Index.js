@@ -412,24 +412,9 @@ function ejecutar(cual) {
             break;
 
         case "telefoniaMovil":
-
-            $('#el_iframe').removeClass('d-block').addClass('d-none');
-            $('#divFrame-content').removeClass('d-none').addClass('d-block');
-
-            $.ajax({
-                type: "GET",
-                url: '/Home/TelefoniaMovil',
-                contentType: 'html',
-                dataType: 'html',
-                async: true,
-                beforeSend: function () {
-                },
-                success: function (response) {
-                    $('#divFrame-content').html(response);
-                },
-                error: function (errorThrown) {
-                }
-            });
+            $('#divFrame-content').removeClass('d-block').addClass('d-none');
+            $('#el_iframe').removeClass('d-none').addClass('d-block');
+            $("#el_iframe").attr('src', 'https://portaldiagnosticouat.telecom.arg.telecom.com.ar/Signed_requestPDD.aspx');
             break;
         case "test_velocidad":
             $('#divFrame-content').removeClass('d-block').addClass('d-none');
@@ -477,7 +462,7 @@ function ActualizarEstado() {
     $("#imgReducidoTelefonia").attr('src', '/Files/iconGris.png');
     $("#imgTelefonia").attr('src', '/Files/iconGris.png');
     $("#imgReducidoTelefoniaMovil").attr('src', '/Files/iconGris.png');
-    $("#imgTelefoniaMovil").attr('src', '/Files/iconGris.png');
+    //$("#imgTelefoniaMovil").attr('src', '/Files/iconGris.png');
     $("#imgServicios").attr('src', '/Files/iconGris.png');
     $("#imgReducidoServicios").attr('src', '/Files/iconGris.png');
 
@@ -567,13 +552,13 @@ function ActualizarEstado() {
                             else if (claveValor[0] == "TelefoniaMovil") {
                                 if (claveValor[1].trim() == "OK") {
                                     $("#imgReducidoTelefoniaMovil").attr('src', '/Files/iconVerde.png');
-                                    $("#imgTelefoniaMovil").attr('src', '/Files/iconVerde.png');
-                                    $("#imgTelefoniaLineaMovil").attr('src', '/Files/iconVerde.png');
+                                    //$("#imgTelefoniaMovil").attr('src', '/Files/iconVerde.png');
+                                    //$("#imgTelefoniaLineaMovil").attr('src', '/Files/iconVerde.png');
                                 }
                                 else {
                                     $("#imgReducidoTelefoniaMovil").attr('src', '/Files/iconRojo.png');
-                                    $("#imgTelefoniaMovil").attr('src', '/Files/iconRojo.png');
-                                    $("#imgTelefoniaLineaMovil").attr('src', '/Files/iconRojo.png');
+                                    //$("#imgTelefoniaMovil").attr('src', '/Files/iconRojo.png');
+                                    //$("#imgTelefoniaLineaMovil").attr('src', '/Files/iconRojo.png');
                                     losServicios = false;
                                 }
                             }

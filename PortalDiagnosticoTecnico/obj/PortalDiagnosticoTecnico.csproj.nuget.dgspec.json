@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\fuentes\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj": {}
+    "C:\\fuentes\\PortalMaqueta\\portalmaqueta31\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj": {}
   },
   "projects": {
-    "C:\\fuentes\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj": {
+    "C:\\fuentes\\PortalMaqueta\\portalmaqueta31\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\fuentes\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj",
+        "projectUniqueName": "C:\\fuentes\\PortalMaqueta\\portalmaqueta31\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj",
         "projectName": "PortalDiagnosticoTecnico",
-        "projectPath": "C:\\fuentes\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj",
+        "projectPath": "C:\\fuentes\\PortalMaqueta\\portalmaqueta31\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico.csproj",
         "packagesPath": "C:\\Users\\jzevallos\\.nuget\\packages\\",
-        "outputPath": "C:\\fuentes\\PortalDiagnosticoTecnico\\PortalDiagnosticoTecnico\\obj\\",
+        "outputPath": "C:\\fuentes\\PortalMaqueta\\portalmaqueta31\\PortalDiagnosticoTecnico\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
